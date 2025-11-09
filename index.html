@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Doe - Photography Portfolio</title>
+    
+    <!-- Tailwind CSS CDN (for rapid prototyping; consider compiling for production) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+    <!-- Header & Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <nav class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo / Name -->
+                <a href="#" class="text-2xl font-bold text-teal-600 tracking-tight">Alex Doe</a>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-gray-700 hover:text-teal-600 transition duration-200">Home</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-teal-600 transition duration-200">Portfolio</a>
+                    <a href="#about" class="text-gray-700 hover:text-teal-600 transition duration-200">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-teal-600 transition duration-200">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button class="text-teal-600 focus:outline-none" aria-label="Toggle menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center text-center px-4">
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Stunning sunrise landscape over mountains" 
+                     class="w-full h-full object-cover opacity-60" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/1920x1080/FFE4E1/FFB6C1?text=Hero+Image'">
+                <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+            </div>
+            
+            <!-- Hero Text -->
+            <div class="relative z-10">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold text-gray-800 drop-shadow-lg animate-fade-in">
+                    Alex Doe Photography
+                </h1>
+                <p class="mt-4 text-lg sm:text-2xl text-gray-600 max-w-2xl mx-auto drop-shadow-md">
+                    Capturing moments that last a lifetime. Specializing in portraits, landscapes, and events.
+                </p>
+                <a href="#portfolio" class="mt-8 inline-block bg-teal-500 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-teal-600 transition duration-300 transform hover:scale-105">
+                    View My Work
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. Portfolio Section -->
+        <section id="portfolio" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-12">
+                    My Portfolio
+                </h2>
+                <!-- Filter Buttons -->
+                <div id="filter-buttons" class="flex justify-center flex-wrap gap-4 mb-12">
+                    <button class="filter-btn active px-5 py-2 rounded-full font-medium text-gray-700 bg-yellow-100 hover:bg-teal-500 hover:text-white transition duration-200" data-filter="all">All</button>
+                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-gray-700 bg-yellow-100 hover:bg-teal-500 hover:text-white transition duration-200" data-filter="portraits">Portraits</button>
+                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-gray-700 bg-yellow-100 hover:bg-teal-500 hover:text-white transition duration-200" data-filter="landscapes">Landscapes</button>
+                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-gray-700 bg-yellow-100 hover:bg-teal-500 hover:text-white transition duration-200" data-filter="weddings">Weddings</button>
+                </div>
+                <!-- Image Grid -->
+                <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Image 1: Portrait -->
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-lg cursor-pointer" data-category="portraits">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Close-up portrait of a smiling woman in golden hour light" 
+                             class="w-full h-64 object-cover" 
+                             loading="lazy"
+                             onclick="openModal(this.src, this.alt)">
+                    </div>
+                    <!-- Image 2: Landscape -->
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-lg cursor-pointer" data-category="landscapes">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Majestic ocean waves crashing on rocky shore at dusk" 
+                             class="w-full h-64 object-cover" 
+                             loading="lazy"
+                             onclick="openModal(this.src, this.alt)">
+                    </div>
+                    <!-- Image 3: Wedding -->
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-lg cursor-pointer" data-category="weddings">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Romantic couple dancing at sunset wedding reception" 
+                             class="w-full h-64 object-cover" 
+                             loading="lazy"
+                             onclick="openModal(this.src, this.alt)">
+                    </div>
+                    <!-- Image 4: Portrait -->
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-lg cursor-pointer" data-category="portraits">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Elderly man with wise expression in black and white" 
+                             class="w-full h-64 object-cover" 
+                             loading="lazy"
+                             onclick="openModal(this.src, this.alt)">
+                    </div>
+                    <!-- Image 5: Landscape -->
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-lg cursor-pointer" data-category="landscapes">
+                        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Snow-capped mountains reflected in crystal-clear lake" 
+                             class="w-full h-64 object-cover" 
+                             loading="lazy"
+                             onclick="openModal(this.src, this.alt)">
+                    </div>
+                    <!-- Image 6: Wedding -->
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-lg cursor-pointer" data-category="weddings">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Bride and groom exchanging vows under floral arch" 
+                             class="w-full h-64 object-cover" 
+                             loading="lazy"
+                             onclick="openModal(this.src, this.alt)">
+                    </div>
+                    <!-- Image 7: Landscape -->
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-lg cursor-pointer" data-category="landscapes">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Vibrant autumn forest path with falling leaves" 
+                             class="w-full h-64 object-cover" 
+                             loading="lazy"
+                             onclick="openModal(this.src, this.alt)">
+                    </div>
+                    <!-- Image 8: Portrait -->
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-lg cursor-pointer" data-category="portraits">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Young child laughing with paint on face in studio" 
+                             class="w-full h-64 object-cover" 
+                             loading="lazy"
+                             onclick="openModal(this.src, this.alt)">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. About Section -->
+        <section id="about" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+                    <!-- About Image -->
+                    <div class="rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Portrait of Alex Doe, passionate photographer in the field" 
+                             class="w-full h-96 object-cover" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/600x600/FFE4E1/FFB6C1?text=Alex+Doe'">
+                    </div>
+                    
+                    <!-- About Text -->
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
+                            About Me
+                        </h2>
+                        <p class="text-lg text-gray-600 mb-4">
+                            Hello! I'm Alex, a passionate photographer based in New York. For over 8 years, I've been freezing moments in time, telling stories through my lens.
+                        </p>
+                        <p class="text-gray-600 mb-4">
+                            My journey began with an old film camera, and the magic of capturing light has never left me. I believe that every photo should evoke an emotion, whether it's the joy of a wedding day, the serenity of a mountain peak, or the unique personality in a portrait.
+                        </p>
+                        <p class="text-gray-600">
+                            When I'm not behind the camera, you can find me hiking, exploring new cafes, or planning my next photographic adventure. Let's create something beautiful together.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Contact Section -->
+        <section id="contact" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto max-w-3xl text-center px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
+                    Get In Touch
+                </h2>
+                <p class="text-lg text-gray-600 mb-10">
+                    Have a project in mind or just want to say hello? I'd love to hear from you.
+                </p>
+                <!-- Contact Form -->
+                <form action="#" method="POST" class="space-y-6" aria-label="Contact form">
+                    <div>
+                        <label for="name" class="sr-only">Name</label>
+                        <input type="text" name="name" id="name" required
+                               class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                               placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" name="email" id="email" required
+                               class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                               placeholder="Your Email">
+                    </div>
+                    <div>
+                        <label for="message" class="sr-only">Message</label>
+                        <textarea name="message" id="message" rows="5" required
+                                  class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                  placeholder="Your Message"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit"
+                                class="w-full bg-teal-500 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-teal-600 transition duration-300 transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 Alex Doe Photography. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal (Lightbox) -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" id="modalClose" aria-label="Close modal">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Enlarged portfolio image">
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
